@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text="#{app.title}"> Title </title>
+   	<link rel="stylesheet" th:href="@{/css/home.css}"/>
+   	
+   	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="banner">
+	<div class="container">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#"><span>#{logo}</span></a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">#{home}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">#{home.create.artist}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">#{home.manage.artist}</a>
+      </li> 
+    <li class="nav-item">
+     	<a class="nav-link" href="#">#{home.login}</a>
+    </li>
+    </ul>
+  </div>
+	</div>
+</nav>
+
+<div class="banner">
+	<div class="container">
+	<div class="banner-text">
+	<div class="banner-heading">
+	#{home.list.artist}
+	</div>
+	<div class="banner-sub-heading">
+	TODO Listado de Artistas
+	</div>
+	<button type="button" class="btn btn-warning text-dark btn-banner">Get started</button>
+	</div>
+	</div>
+</div>
+<section id="about">
+<div class="container">
+	<div class="text-intro">
+	<h2>About Us</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+	</div>
+</div>
+</section>
+
+</body>
+</html> 
