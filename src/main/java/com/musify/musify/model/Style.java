@@ -1,9 +1,15 @@
 package com.musify.musify.model;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 
+@Entity
 public class Style {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
 	
@@ -19,7 +25,6 @@ public class Style {
 		this.name = name;
 	}
 	
-	@NotNull
 	public long getId() {
 		return id;
 	}

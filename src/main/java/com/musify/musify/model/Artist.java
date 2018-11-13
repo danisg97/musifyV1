@@ -1,23 +1,31 @@
 package com.musify.musify.model;
 
-import java.util.ArrayList;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 
-import javax.validation.constraints.NotNull;
-
+@Entity
 public class Artist {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
 	private int year;
-	private Style style;
-	private ArrayList<People> menbers;
-	private Artist related;
+	private long style;
+	private long menbers;
+	private long related;
 	
 	public Artist() {
 	}
 	
-	public Artist(long id, String name, int year, Style style, ArrayList<People> menbers, Artist related) {
-		this.id = id;
+	public Artist(String name, int year) {
+		this.name = name;
+		this.year = year;
+	}
+	
+	public Artist(String name, int year, long style, long menbers, long related) {
 		this.name = name;
 		this.year = year;
 		this.style = style;
@@ -25,7 +33,6 @@ public class Artist {
 		this.related = related;
 	}
 	
-	@NotNull
 	public long getId() {
 		return id;
 	}
@@ -44,22 +51,22 @@ public class Artist {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	public Style getStyle() {
+	public long getStyle() {
 		return style;
 	}
-	public void setStyle(Style style) {
+	public void setStyle(long style) {
 		this.style = style;
 	}
-	public ArrayList<People> getMenbers() {
+	public long getMenbers() {
 		return menbers;
 	}
-	public void setMenbers(ArrayList<People> menbers) {
+	public void setMenbers(long menbers) {
 		this.menbers = menbers;
 	}
-	public Artist getRelated() {
+	public long getRelated() {
 		return related;
 	}
-	public void setRelated(Artist related) {
+	public void setRelated(long related) {
 		this.related = related;
 	}
 	

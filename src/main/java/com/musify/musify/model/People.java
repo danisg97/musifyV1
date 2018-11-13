@@ -1,9 +1,15 @@
 package com.musify.musify.model;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Entity;
 
+@Entity
 public class People {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
 	private int years;
@@ -16,14 +22,12 @@ public class People {
 		
 	}
 	
-	public People(long id, String name, int years) {
-		this.id = id;
+	public People(String name, int years) {
 		this.name = name;
 		this.years = years;
 		
 	}
 	
-	@NotNull
 	public long getId() {
 		return id;
 	}
