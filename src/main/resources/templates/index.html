@@ -61,12 +61,30 @@
 </div>
 </section>
 
+
+<table>
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Name</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr th:each="allArtist : ${allArtist}">
+ <td th:text="${allArtist.id}">Text ...</td>
+ <td th:text="${allArtist.name}">Text ...</td>
+ </tr>
+ </tbody>
+ </table>
+
 <h2>Add An Artist</h2>
  <form action="#" th:action="@{/home}" method="post">
  <label>Name<input type="text" name="name" id="name"></input></label>
  <label>Year<input type="text" name="year" id="year"></input></label>
  <input type="submit" value="Submit"></input>
  </form>
+ 
+ <a th:href="@{/add-people}"> URL </a>
 
 </body>
 </html> 

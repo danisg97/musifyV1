@@ -17,6 +17,10 @@ public class Artist {
 	public Artist() {
 	}
 	
+	public Artist(String name) {
+		this.name = name;
+	}
+	
 	public Artist(String name, int year) {
 		this.name = name;
 		this.year = year;

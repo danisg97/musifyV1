@@ -20,7 +20,7 @@ public class ArtistService {
 	
 	// private static final String SQL_CREATEARTIST = "CREATE TABLE ARTIST (ID LONG NOT NULL AUTO_INCREMENT, NAME VARCHAR(40) NOT NULL, STYLE LONG, MEMBER LONG, RELATED LONG, PRIMARY KEY (ID), CONSTRAINT FK_STYLE FOREIGN KEY (STYLE) REFERENCES STYLE(ID), CONSTRAINT FK_MEMBER FOREIGN KEY (MEMBER) REFERENCES PEOPLE(ID))";
 	private static final String SQL_INSERTARTIST = "INSERT INTO ARTIST(NAME, YEAR) values (?, ?)";
-	private static final String SQL_ARTIST = "SELECT * FROM ARTIST";
+	private static final String SQL_ARTIST = "SELECT NAME FROM ARTIST";
 	
 	public void addArtist(Artist artist) {
 		
@@ -55,7 +55,7 @@ public class ArtistService {
 	            preparedStatement = conn.prepareStatement(SQL_ARTIST);
 	            resultSet = preparedStatement.executeQuery();
 	            while(resultSet.next()) {
-	                Artist artist = new Artist(resultSet.getString(2), resultSet.getInt(3));
+	                Artist artist = new Artist(resultSet.getString(1));
 	                lista.add(artist);
 	                        
 	            }
