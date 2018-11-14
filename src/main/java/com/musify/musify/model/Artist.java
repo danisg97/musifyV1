@@ -13,9 +13,6 @@ public class Artist {
 	private long id;
 	private String name;
 	private int year;
-	private long style;
-	private long menbers;
-	private long related;
 	
 	public Artist() {
 	}
@@ -23,14 +20,6 @@ public class Artist {
 	public Artist(String name, int year) {
 		this.name = name;
 		this.year = year;
-	}
-	
-	public Artist(String name, int year, long style, long menbers, long related) {
-		this.name = name;
-		this.year = year;
-		this.style = style;
-		this.menbers = menbers;
-		this.related = related;
 	}
 	
 	public long getId() {
@@ -50,24 +39,6 @@ public class Artist {
 	}
 	public void setYear(int year) {
 		this.year = year;
-	}
-	public long getStyle() {
-		return style;
-	}
-	public void setStyle(long style) {
-		this.style = style;
-	}
-	public long getMenbers() {
-		return menbers;
-	}
-	public void setMenbers(long menbers) {
-		this.menbers = menbers;
-	}
-	public long getRelated() {
-		return related;
-	}
-	public void setRelated(long related) {
-		this.related = related;
 	}
 	
 }

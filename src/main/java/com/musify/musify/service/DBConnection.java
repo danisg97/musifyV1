@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import com.musify.musify.model.People;
 import com.musify.musify.model.Style;
+import com.musify.musify.repository.ArtistRepository;
+import com.musify.musify.repository.PeopleRepository;
 
 public class DBConnection implements ConnectionManager{
 	
@@ -18,19 +20,10 @@ public class DBConnection implements ConnectionManager{
 	private static final String PASSWORD = "";
 	
 	// TODO Delete!
-	public static void main(String[] args) {
-		ConnectionManager manager = new DBConnection(); 
-		Connection conn = manager.open(DB_URL);
-		
-		ArtistService service = new ArtistService();
-		
-		if(conn != null) {
-			System.out.println("Conectada!");
-			insertStyle(new Style());
-		}
-		
-		
-		System.out.println(service.allArtist());
+	public static void main(String[] args) {		
+		PeopleRepository repo = new PeopleRepository();
+		ArtistRepository repo2 = new ArtistRepository();
+		System.out.println(repo2.findArtistByStyle(1));
 	}
 	
 	// TODO Delete!

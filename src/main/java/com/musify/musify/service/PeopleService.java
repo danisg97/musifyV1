@@ -1,6 +1,5 @@
 package com.musify.musify.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +19,7 @@ public class PeopleService {
 	private static final String DB_URL = "jdbc:h2:~/test";
 	
 	// private static final String SQL_CREATEPEOPLE = "CREATE TABLE PEOPLE (ID INTEGER NOT NULL AUTO_INCREMENT, NAME VARCHAR(40) NOT NULL, YEARS INTEGER, PRIMARY KEY (ID))";
-	private static final String SQL_INSERTPEOPLE = "INSERT INTO PEOPLE(NAME, YEARS) values (?, ?)";
+	private static final String SQL_INSERTPEOPLE = "INSERT INTO PEOPLE(NAME, YEARS, MEMBER) values (?, ?, ?)";
 	
 	private PeopleRepository peopleRepo = new PeopleRepository();
 	
@@ -28,13 +27,14 @@ public class PeopleService {
 		
 		conn = manager.open(DB_URL);
 		
-		// Comprobamos que el usuario no existe en la DB.
+		// Check if the user exist on DB
 		if(!peopleRepo.existsPeople(people.getName())) {
 			
 			try{
 				preparedstatement = conn.prepareStatement(SQL_INSERTPEOPLE);
 		        preparedstatement.setString(1, people.getName());
 		        preparedstatement.setInt(2, people.getYears());
+		        preparedstatement.setLong(3, people.getMember());
 		        preparedstatement.executeUpdate();
 			}catch (SQLException e) {
 		        System.out.println("SQLException INSERT ARTIST method");

@@ -13,6 +13,7 @@ public class People {
 	private long id;
 	private String name;
 	private int years;
+	private long member;
 	
 	public People() {		
 	}
@@ -28,6 +29,13 @@ public class People {
 		
 	}
 	
+	public People(String name, int years, long member) {
+		this.name = name;
+		this.years = years;
+		this.member = member;
+		
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -39,6 +47,12 @@ public class People {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public long getMember() {
+		return member;
+	}
+	public void setMember(long member) {
+		this.member = member;
 	}
 	public int getYears() {
 		return years;

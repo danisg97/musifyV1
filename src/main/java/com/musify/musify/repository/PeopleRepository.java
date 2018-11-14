@@ -5,10 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.stereotype.Repository;
+
 import com.musify.musify.model.People;
 import com.musify.musify.service.ConnectionManager;
 import com.musify.musify.service.DBConnection;
 
+@Repository
 public class PeopleRepository {
 
 	ConnectionManager manager = new DBConnection();
@@ -18,12 +21,12 @@ public class PeopleRepository {
     
 	private static final String DB_URL = "jdbc:h2:~/test";
 	
-    private static final String SQL_SEARCHPEOPLE = "SELECT NAME FROM PEOPLE WHERE NAME = '?'";
+    private static final String SQL_SEARCHPEOPLE = "SELECT NAME FROM PEOPLE WHERE NAME = ?";
+    private static final String SQL_INSERTPEOPLEARTISTS = "UPDATE PEOPLE SET MEMBER = ? WHERE ID = ?";
 	
-    // TODO Revisar y ejecutar bien este metodo.
+    // Check if people exits.
 	public Boolean existsPeople(String name){
 		
-		People peopleFromDB = null;
 		ResultSet resultSet = null;
 		conn = manager.open(DB_URL);
 		
@@ -33,14 +36,10 @@ public class PeopleRepository {
 			preparedStatement = conn.prepareStatement(SQL_SEARCHPEOPLE);
 	        preparedStatement.setString(1, name);
 	        resultSet = preparedStatement.executeQuery();
-	        while(resultSet.next()){
-				peopleFromDB = new People();
-				peopleFromDB.setName(resultSet.getString(1));
-	        }
 	        
-	        if(resultSet != null) {
+	        if(resultSet.next()){
 	        	isE = true;
-	        	System.out.println("El usuario Existe!");
+		        System.out.println("El usuario existe!");
 	        }
 	        
 		}catch(SQLException e){
@@ -54,6 +53,27 @@ public class PeopleRepository {
 		manager.close(conn);
 		
 		return isE;
+	}
+	
+	// Add a new Member to an Artist.
+	public void addPeopleToAnArtist(long idPeople, long idMember) {
+		
+		conn = manager.open(DB_URL);
+			
+		try{
+			preparedStatement = conn.prepareStatement(SQL_INSERTPEOPLEARTISTS);
+		    preparedStatement.setLong(1, idMember);
+		    preparedStatement.setLong(2, idPeople);
+		    preparedStatement.executeUpdate();
+		}catch (SQLException e) {
+			System.out.println("SQLException ADDING NEW MEMBER method");
+		    throw new RuntimeException(e);
+		}finally{
+			close(preparedStatement);
+		}
+			 
+		manager.close(conn);
+	
 	}
 	
 	public void close(PreparedStatement preparedStatement){
