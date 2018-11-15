@@ -45,9 +45,19 @@ public class ArtistController {
 		return "redirect:/home";
      }
 	 
-	 @GetMapping("/add-people")
-		public String addPeople() {		    
-		    return "add-people";
-		}
+	 @GetMapping("/artist")
+	 public String redirectToArtistView() {		    
+	    return "artist";
+	 }
+	 
+	 @GetMapping("/people")
+	 public String redirectToPeopleView() {		    
+	    return "people";
+	 }
+	 
+	 @GetMapping("/add-artist")
+	 public String redirectToAddArtist() {		    
+	    return "add-artist";
+	 }
 	 
 }

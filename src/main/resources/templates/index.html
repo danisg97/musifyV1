@@ -9,60 +9,54 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="banner">
-	<div class="container">
-  <!-- Brand -->
-  <a class="navbar-brand" href="#"><span>#{logo}</span></a>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="navbar-app">
+	<div class="container" id="navbar-app">
+	
+  	<a class="navbar-brand" href="#"><span id="logo">#{logo}</span></a>
 
-  <!-- Toggler/collapsibe Button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+ 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    	<span class="navbar-toggler-icon"></span>
+ 	 </button>
 
-  <!-- Navbar links -->
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">#{home}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">#{home.create.artist}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">#{home.manage.artist}</a>
-      </li> 
-    <li class="nav-item">
-     	<a class="nav-link" href="#">#{home.login}</a>
-    </li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="#">#{home.create.artist}</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" th:href="@{/people}">#{home.people}</a>
+     	</li> 
+    	<li class="nav-item">
+     		<a class="nav-link" href="#">#{home.related.artist}</a>
+    	</li>
     </ul>
-  </div>
+  	</div>
 	</div>
-</nav>
+	</nav>
 
-<div class="banner">
+	<div class="banner" >
+		<div class="container">
+			<div class="banner-text">
+				<div class="banner-heading">
+					#{home.welcome}
+				</div>
+				<!--<div class="banner-sub-heading">
+					TODO Listado de Artistas
+				</div>-->
+				<button type="button" class="btn btn-warning text-dark btn-banner">#{home.explore}</button>
+			</div>
+		</div>
+	</div>
+	<section id="about">
 	<div class="container">
-	<div class="banner-text">
-	<div class="banner-heading">
-	#{home.list.artist}
+		<div class="text-intro">
+			<h2>About Us</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+		</div>
 	</div>
-	<div class="banner-sub-heading">
-	TODO Listado de Artistas
-	</div>
-	<button type="button" class="btn btn-warning text-dark btn-banner">Get started</button>
-	</div>
-	</div>
-</div>
-<section id="about">
-<div class="container">
-	<div class="text-intro">
-	<h2>About Us</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-	</div>
-</div>
-</section>
+	</section>
 
-
-<table>
+<!--<table>
  <thead>
  <tr>
  <th>ID</th>
@@ -84,7 +78,7 @@
  <input type="submit" value="Submit"></input>
  </form>
  
- <a th:href="@{/add-people}"> URL </a>
+ <a th:href="@{/add-people}"> URL </a>-->
 
 </body>
 </html> 
