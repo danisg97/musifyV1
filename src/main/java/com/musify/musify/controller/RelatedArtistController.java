@@ -12,7 +12,7 @@ public class RelatedArtistController {
 	public String relatedArtist(Model model) {
 	    
 	    return "related-artist";
-	}*/
+	}
 	
 	@GetMapping("/related-artist/{id}")
 	public String relatedArtist(Model model, @PathVariable String id) {
@@ -20,6 +20,6 @@ public class RelatedArtistController {
 		System.out.println("ID : " + id);
 		
 	    return "related-artist";
-	}
+	}*/
 	
 }

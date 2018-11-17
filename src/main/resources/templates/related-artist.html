@@ -40,10 +40,32 @@
 				<div class="banner-heading">
 					#{home.related.artist}
 				</div>
+				<div class="container-fluid banner-sub-content">
+					<div class="card">
+					  <div class="card-body">
+					    <h5 class="card-title" ></h5>
+					    <h6 class="card-subtitle mb-2 text-muted"></h6>
+					    <div class="content-artist table-responsive">
+			            	<table class="table table-dark">
+			            	<thead>
+				                <tr>
+				                  	<th class="title-table">Related artists</th>
+				                </tr>
+				             </thead>
+				             <tbody>
+				             <tr th:each="allRelatedArtist : ${allRelatedArtist}">
+							    <th th:text="${allRelatedArtist.name}"></th>
+							 </tr>
+				             </tbody>
+			            	</table>
+			            </div>
+					  </div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
+	
 <section>
 
 </section>

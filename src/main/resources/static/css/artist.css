@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1|Kaushan+Script|Libre+Baskerville|Lobster');
+.glyphicon-lg
+{
+    font-size:4em;
+}
+.info-block
+{
+    border-right:5px solid #E6E6E6;
+    margin-bottom:25px;
+}
+.info-block .square-box
+{
+    width:100px;
+    min-height:110px;
+    margin-right:22px;
+    text-align:center!important;
+    background-color:#212529;
+    padding:20px 0;
+}
+.info-block.block-info
+{
+    border-color:#20819e;
+}
+.info-block.block-info .square-box
+{
+    background-color:#20819e;
+    color:#FFF;
+}
+
+.items {
+	background-color:black; 
+}
+
+.content-box {
+	color: white;
+}
+
+.about {
+	background-color: black;
+}
+
+.btn-circle {
+  height: 30px;
+  font-size: 12px;
+  font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+}
+
+.title-table {
+  height: 30px;
+  color: #fed136;
+  font-size: 28px;
+  font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+}
+
+.actions {
+	text-align: right;
+}
+
+.banner-sub-content{
+	font-family: 'Gothic A1', sans-serif;
+	font-size: 20px;
+    font-weight: 200;
+    line-height: 20px;
+    margin-bottom: 50px;
+	color: #fff
+}
+
+.needed {
+	font-family: 'Gothic A1', sans-serif;
+	color: red;
+}

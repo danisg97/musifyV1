@@ -26,6 +26,12 @@ public class Artist {
 		this.year = year;
 	}
 	
+	public Artist(Long id, String name, int year) {
+		this.id = id;
+		this.name = name;
+		this.year = year;
+	}
+	
 	public long getId() {
 		return id;
 	}

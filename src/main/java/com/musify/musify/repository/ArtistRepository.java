@@ -21,6 +21,7 @@ public class ArtistRepository {
 	private static final String DB_URL = "jdbc:h2:~/test";
 	private static final String SQL_ARTISTSTYLE = "SELECT ARTIST.NAME FROM ARTIST INNER JOIN STYLES ON STYLES.ID_STYLE = ? AND ARTIST.ID = STYLES.ID_ARTIST";
 	private static final String SQL_ARTISTRELATED = "SELECT ARTIST.NAME FROM ARTIST INNER JOIN RELATED ON RELATED.ID_ARTIST_RELATED = ? AND ARTIST.ID = RELATED.ID_ARTIST";
+	private static final String SQL_SEARCHARTIST = "SELECT NAME FROM ARTIST WHERE NAME = ?";
 	
 	ConnectionManager manager = new DBConnection();
     Connection conn = null;
@@ -28,6 +29,36 @@ public class ArtistRepository {
     PreparedStatement preparedStatement = null;
     Statement statement = null;
     ResultSet resultSet = null;
+    
+    public boolean existsArtist(String name){
+		
+		ResultSet resultSet = null;
+		conn = manager.open(DB_URL);
+		
+		boolean isE = false;
+		
+		try{	
+			preparedStatement = conn.prepareStatement(SQL_SEARCHARTIST);
+	        preparedStatement.setString(1, name);
+	        resultSet = preparedStatement.executeQuery();
+	        
+	        if(resultSet.next()){
+	        	isE = true;
+		        System.out.println("El artista existe!");
+	        }
+	        
+		}catch(SQLException e){
+			System.out.println("SQLException EXIST ARTIST method");
+	        throw new RuntimeException(e);
+		}finally{
+	        close(preparedStatement);
+	        close(resultSet);
+		}
+	        
+		manager.close(conn);
+		
+		return isE;
+	}
         
     // List artist by style.
 	public List<Artist> findArtistByStyle(long idStyle) {
@@ -62,7 +93,7 @@ public class ArtistRepository {
 	}
 	
 	// TODO Get related artists
-	public List<Related> findRelatedArtist(long idArtist) {
+	public List<Artist> findRelatedArtist(long idArtist) {
  		
 		List<Artist> listRelated = new ArrayList<>();
 		
@@ -71,7 +102,7 @@ public class ArtistRepository {
 		
 		try {
 			
-			preparedStatement = conn.prepareStatement(SQL_ARTISTSTYLE);
+			preparedStatement = conn.prepareStatement(SQL_ARTISTRELATED);
 			preparedStatement.setLong(1, idArtist);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -83,10 +114,16 @@ public class ArtistRepository {
 			}
 		
 		} catch (SQLException e) {
-			
+			System.out.println("SQLException FIND RELATED ARTIST method");
+	        throw new RuntimeException(e);
+		}finally{
+	        close(preparedStatement);
+	        close(resultSet);
 		}
+	        
+		manager.close(conn);
 		
- 		return null;
+ 		return listRelated;
  	}
 	
 	public void close(PreparedStatement preparedStatement){

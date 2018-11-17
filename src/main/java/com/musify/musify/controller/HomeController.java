@@ -9,8 +9,6 @@ public class HomeController {
 	
 	@GetMapping("/home")
 	public String home(Model model) {  
-		String id = "1";
-		model.addAttribute("id", id);
 	    return "home";
 	}
 	
@@ -22,12 +20,6 @@ public class HomeController {
 	// Redirect to People View.
 	public String redirectToPeopleView() {		    
 		return "people";
-	}
-	
-	// Redirect to Related Artist View.
-	public String redirectToRelatedArtistView(Model model) {
-		
-		return "related-artist";
 	}
 	 
 }
