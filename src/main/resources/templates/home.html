@@ -27,34 +27,56 @@
         	<a class="nav-link" th:href="@{/people}">#{home.people}</a>
      	</li> 
     	<li class="nav-item">
-     		<a class="nav-link" th:href="@{/related-artist}">#{home.related.artist}</a>
+     		<!-- <a class="nav-link" th:href="@{/related-artist/1}">#{home.related.artist}</a> -->
+     		<a class="nav-link" th:href="@{'/related-artist/' + ${id}}">#{home.related.artist}</a>
     	</li>
     </ul>
   	</div>
 	</div>
 	</nav>
-	
+
 	<div class="banner" >
 		<div class="container">
 			<div class="banner-text">
 				<div class="banner-heading">
-					#{home.people}
+					#{home.welcome}
 				</div>
+				<button type="button" class="btn btn-warning text-dark btn-banner">#{home.explore}</button>
 			</div>
 		</div>
 	</div>
-
-<section id="about">
+	<section class="section" id="about">
 	<div class="container">
-<h2>Add People</h2>
- <form action="#" th:action="@{/people}" method="post">
+		<div class="text-intro">
+			<h2>About Us</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+		</div>
+	</div>
+	</section>
+
+<!--<table>
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Name</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr th:each="allArtist : ${allArtist}">
+ <td th:text="${allArtist.id}">Text ...</td>
+ <td th:text="${allArtist.name}">Text ...</td>
+ </tr>
+ </tbody>
+ </table>
+
+<h2>Add An Artist</h2>
+ <form action="#" th:action="@{/home}" method="post">
  <label>Name<input type="text" name="name" id="name"></input></label>
- <label>Year<input type="text" name="years" id="years"></input></label>
- <label>Member<input type="text" name="member" id="member"></input></label>
+ <label>Year<input type="text" name="year" id="year"></input></label>
  <input type="submit" value="Submit"></input>
  </form>
- </div>
- </section>
  
+ <a th:href="@{/add-people}"> URL </a>-->
+
 </body>
 </html> 

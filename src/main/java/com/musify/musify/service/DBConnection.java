@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import com.musify.musify.model.People;
 import com.musify.musify.model.Style;
 import com.musify.musify.repository.ArtistRepository;
-import com.musify.musify.repository.PeopleRepository;
+import com.musify.musify.repository.PeopleRepositoryImpl;
 
 public class DBConnection implements ConnectionManager{
 	
@@ -21,7 +21,7 @@ public class DBConnection implements ConnectionManager{
 	
 	// TODO Delete!
 	public static void main(String[] args) {		
-		PeopleRepository repo = new PeopleRepository();
+		PeopleRepositoryImpl repo = new PeopleRepositoryImpl();
 		ArtistRepository repo2 = new ArtistRepository();
 		System.out.println(repo2.findArtistByStyle(1));
 	}

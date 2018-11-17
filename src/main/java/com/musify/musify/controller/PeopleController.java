@@ -1,5 +1,7 @@
 package com.musify.musify.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.musify.musify.model.People;
 import com.musify.musify.service.PeopleService;
 
+@Controller
 public class PeopleController {
 	
-	PeopleService peopleService = new PeopleService();
+	@Autowired
+	PeopleService peopleService;
 	
-	@GetMapping("/")
+	@GetMapping("/people")
 	public String people(Model model) {
 	    
 	    return "people";
@@ -29,11 +33,6 @@ public class PeopleController {
 		 
 		 peopleService.addPeople(peopleToInsert);
 		 
-		return redirectToPeopleView();
+		return "redirect:/people";
      }
-	
-	public String redirectToPeopleView() {		    
-	    return "redirect:/home";
-	}
-
 }

@@ -6,9 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.musify.musify.model.People;
-import com.musify.musify.repository.PeopleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
+import com.musify.musify.model.People;
+import com.musify.musify.repository.PeopleRepositoryImpl;
+
+@Service
 public class PeopleService {
 	
 	ConnectionManager manager = new DBConnection();
@@ -18,15 +23,15 @@ public class PeopleService {
     
 	private static final String DB_URL = "jdbc:h2:~/test";
 	
-	// private static final String SQL_CREATEPEOPLE = "CREATE TABLE PEOPLE (ID INTEGER NOT NULL AUTO_INCREMENT, NAME VARCHAR(40) NOT NULL, YEARS INTEGER, PRIMARY KEY (ID))";
+	// private static final String SQL_CREATEPEOPLE = "CREATE TABLE IF NOT EXISTS PEOPLE (ID LONG NOT NULL AUTO_INCREMENT,NAME VARCHAR(40) NOT NULL, YEARS INTEGER, MEMBER LONG, PRIMARY KEY (ID), CONSTRAINT FK_MEMBER FOREIGN KEY (MEMBER) REFERENCES ARTIST(ID))";
 	private static final String SQL_INSERTPEOPLE = "INSERT INTO PEOPLE(NAME, YEARS, MEMBER) values (?, ?, ?)";
 	
-	private PeopleRepository peopleRepo = new PeopleRepository();
+	private PeopleRepositoryImpl peopleRepo = new PeopleRepositoryImpl();
 	
 	public void addPeople(People people) {
 		
 		conn = manager.open(DB_URL);
-		
+				
 		// Check if the user exist on DB
 		if(!peopleRepo.existsPeople(people.getName())) {
 			
