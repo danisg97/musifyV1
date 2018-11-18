@@ -25,7 +25,7 @@
       	</li>
       	<li class="nav-item">
         	<a class="nav-link" th:href="@{/people}">People</a>
-     	</li>
+     	</li> 
     </ul>
   	</div>
 	</div>
@@ -35,64 +35,30 @@
 		<div class="container">
 			<div class="banner-text">
 				<div class="banner-heading">
-					Artists
+					People
 				</div>
-				<a class="btn btn-warning text-dark btn-banner" th:href="@{/add-artist}">Create a new artist!</a>
+				<div class="banner-sub-heading">
+					Add people to an artist!
+				</div>
+				<div class="container-fluid banner-sub-content">
+					<form action="" th:action="@{/add-peopleartist}" method="post">
+						<div class="form-group">
+							<label for="name">Name<span class="needed">*</span></label>
+						    <select class="form-control" id="idPeople" name="idPeople">
+								<option value="0">--</option>
+								<option th:each="allPeople : ${allPeople}" 
+									th:value="${allPeople.id}" 
+									th:text="${allPeople.name}" />
+							</select>
+						</div>
+						<button type="submit" class="btn btn-success">Create</button>
+						<a class="btn btn-danger" th:href="@{/artist}">Back</a>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
 	
-	<div class="form-row form-style">
-		<form action="" th:action="@{/artist}" method="post" class="form-row form-style">
-			<div class="form-row form-style">
-				<div class="form-group col-auto">
-					<label for="style" class="title-table">Select a Style</label>
-				</div>
-				<div class="form-group col-auto dropdown">
-					<div class="form-group blu-margin">
-						<select class="form-control" id="id" name="id">
-							<option value="0">--</option>
-							<option th:each="allStyles : ${allStyles}" 
-								th:value="${allStyles.id}" 
-								th:text="${allStyles.name}" />
-						</select>
-					</div>
-				</div>
-				<div class="form-group col-auto">
-					<button type="submit" class="btn btn-warning">Search</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	
-	<div class="container-fluid banner-sub-content">
-		<div class="row">
-			<div class="content-artist table-responsive">
-            	<table class="table table-dark">
-            	<thead>
-	                <tr>
-	                  	<th class="title-table">Name</th>
-	                  	<th class="title-table">Year</th>
-	                  	<th></th>
-	                </tr>
-	             </thead>
-	             <tbody>
-	             <tr th:each="allArtist : ${allArtist}">
-				    <th scope="row" th:text="${allArtist.name}"></th>
-				    <td  th:text="${allArtist.year}"></td>
-				    <td class="actions">
-					<a class="btn btn-success btn-circle" th:href="@{'/add-peopleartist/' + ${allArtist.id}}">Members</a>
-					<a class="btn btn-danger btn-circle">Like</a>
-					<a class="btn btn-warning btn-circle" th:href="@{'/related-artist/' + ${allArtist.id}}">Related artists</a>
-					
-				    </td>
-				 </tr>
-	             </tbody>
-            	</table>
-            </div>
-		</div>
-	</div>
-		
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

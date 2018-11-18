@@ -29,6 +29,13 @@ public class People {
 		
 	}
 	
+	public People(long id, String name, int years) {
+		this.id = id;
+		this.name = name;
+		this.years = years;
+		
+	}
+	
 	public People(String name, int years, long member) {
 		this.name = name;
 		this.years = years;

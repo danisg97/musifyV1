@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 import org.springframework.stereotype.Repository;
 
-import com.musify.musify.service.ConnectionManager;
-import com.musify.musify.service.DBConnection;
+import com.musify.musify.connection.ConnectionManager;
+import com.musify.musify.connection.DBConnection;
 
 @Repository
 public class PeopleRepositoryImpl implements PeopleRepository{
@@ -57,13 +57,13 @@ public class PeopleRepositoryImpl implements PeopleRepository{
 	
 	// Add a new Member to an Artist.
     @Override
-	public void addPeopleToAnArtist(long idPeople, long idMember) {
+	public void addPeopleToAnArtist(long idPeople, long idArtist) {
 		
 		conn = manager.open(DB_URL);
 			
 		try{
 			preparedStatement = conn.prepareStatement(SQL_INSERTPEOPLEARTISTS);
-		    preparedStatement.setLong(1, idMember);
+		    preparedStatement.setLong(1, idArtist);
 		    preparedStatement.setLong(2, idPeople);
 		    preparedStatement.executeUpdate();
 		}catch (SQLException e) {

@@ -12,7 +12,7 @@
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="navbar-app">
 	<div class="container" id="navbar-app">
 	
-  	<a class="navbar-brand" th:href="@{/home}"><span id="logo">#{logo}</span></a>
+  	<a class="navbar-brand" th:href="@{/home}"><span id="logo">Musify</span></a>
 
  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	<span class="navbar-toggler-icon"></span>
@@ -21,15 +21,11 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       	<li class="nav-item">
-        	<a class="nav-link" th:href="@{/artist}">#{home.artist}</a>
+        	<a class="nav-link" th:href="@{/artist}">Artists</a>
       	</li>
       	<li class="nav-item">
-        	<a class="nav-link" th:href="@{/people}">#{home.people}</a>
+        	<a class="nav-link" th:href="@{/people}">People</a>
      	</li> 
-    	<li class="nav-item">
-     		<!-- <a class="nav-link" th:href="@{/related-artist/1}">#{home.related.artist}</a> -->
-     		<a class="nav-link" th:href="@{'/related-artist/' + ${id}}">#{home.related.artist}</a>
-    	</li>
     </ul>
   	</div>
 	</div>
@@ -39,9 +35,9 @@
 		<div class="container">
 			<div class="banner-text">
 				<div class="banner-heading">
-					#{home.welcome}
+					Welcome to Musify!
 				</div>
-				<button type="button" class="btn btn-warning text-dark btn-banner">#{home.explore}</button>
+				<button type="button" class="btn btn-warning text-dark btn-banner">Explore!</button>
 			</div>
 		</div>
 	</div>
@@ -53,30 +49,5 @@
 		</div>
 	</div>
 	</section>
-
-<!--<table>
- <thead>
- <tr>
- <th>ID</th>
- <th>Name</th>
- </tr>
- </thead>
- <tbody>
- <tr th:each="allArtist : ${allArtist}">
- <td th:text="${allArtist.id}">Text ...</td>
- <td th:text="${allArtist.name}">Text ...</td>
- </tr>
- </tbody>
- </table>
-
-<h2>Add An Artist</h2>
- <form action="#" th:action="@{/home}" method="post">
- <label>Name<input type="text" name="name" id="name"></input></label>
- <label>Year<input type="text" name="year" id="year"></input></label>
- <input type="submit" value="Submit"></input>
- </form>
- 
- <a th:href="@{/add-people}"> URL </a>-->
-
 </body>
 </html> 

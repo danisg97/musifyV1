@@ -12,7 +12,7 @@
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="navbar-app">
 	<div class="container" id="navbar-app">
 	
-  	<a class="navbar-brand" th:href="@{/home}"><span id="logo">#{logo}</span></a>
+  	<a class="navbar-brand" th:href="@{/home}"><span id="logo">Musify</span></a>
 
  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	<span class="navbar-toggler-icon"></span>
@@ -21,14 +21,11 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       	<li class="nav-item">
-        	<a class="nav-link" th:href="@{/artist}">#{home.artist}</a>
+        	<a class="nav-link active" th:href="@{/artist}">Artists</a>
       	</li>
       	<li class="nav-item">
-        	<a class="nav-link" th:href="@{/people}">#{home.people}</a>
-     	</li> 
-    	<li class="nav-item">
-     		<a class="nav-link" th:href="@{/related-artist}">#{home.related.artist}</a>
-    	</li>
+        	<a class="nav-link" th:href="@{/people}">People</a>
+     	</li>
     </ul>
   	</div>
 	</div>
@@ -38,27 +35,35 @@
 		<div class="container">
 			<div class="banner-text">
 				<div class="banner-heading">
-					#{home.related.artist}
+					Related Artists
 				</div>
-				<div class="container-fluid banner-sub-content">
-					<div class="card">
+				<div class="container-fluid">
+					<div class="related-content">
 					  <div class="card-body">
 					    <h5 class="card-title" ></h5>
 					    <h6 class="card-subtitle mb-2 text-muted"></h6>
-					    <div class="content-artist table-responsive">
-			            	<table class="table table-dark">
-			            	<thead>
-				                <tr>
-				                  	<th class="title-table">Related artists</th>
-				                </tr>
-				             </thead>
-				             <tbody>
-				             <tr th:each="allRelatedArtist : ${allRelatedArtist}">
-							    <th th:text="${allRelatedArtist.name}"></th>
-							 </tr>
-				             </tbody>
-			            	</table>
-			            </div>
+					    <div class="row">
+							<div class="content-artist table-responsive">
+				            	<table class="table table-dark">
+				            	<thead>
+					                <tr>
+					                  	<th class="title-table">Name</th>
+					                  	<th></th>
+					                </tr>
+					             </thead>
+					             <tbody>
+					             <tr th:each="allRelatedArtist : ${allRelatedArtist}">
+								    <td th:text="${allRelatedArtist.name}"></td>
+								    <td><a class="btn btn-danger btn-circle" th:href="@{'/delete-related/' + ${allRelatedArtist.id}}">Delete</a></td>
+								 </tr>
+					             </tbody>
+				            	</table>
+				            	<div class="actions">
+				            		<a class="btn btn-success btn-circle" th:href="@{'/add-related/' + ${idPath}}">Add new Related!</a>
+				            	</div>
+				            </div>
+							
+						</div>
 					  </div>
 					</div>
 				</div>

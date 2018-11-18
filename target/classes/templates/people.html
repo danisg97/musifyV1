@@ -12,7 +12,7 @@
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="navbar-app">
 	<div class="container" id="navbar-app">
 	
-  	<a class="navbar-brand" th:href="@{/home}"><span id="logo">#{logo}</span></a>
+  	<a class="navbar-brand" th:href="@{/home}"><span id="logo">Musify</span></a>
 
  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     	<span class="navbar-toggler-icon"></span>
@@ -21,14 +21,11 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       	<li class="nav-item">
-        	<a class="nav-link" th:href="@{/artist}">#{home.artist}</a>
+        	<a class="nav-link" th:href="@{/artist}">Artists</a>
       	</li>
       	<li class="nav-item">
-        	<a class="nav-link" th:href="@{/people}">#{home.people}</a>
+        	<a class="nav-link active" th:href="@{/people}">People</a>
      	</li> 
-    	<li class="nav-item">
-     		<a class="nav-link" th:href="@{/related-artist}">#{home.related.artist}</a>
-    	</li>
     </ul>
   	</div>
 	</div>
@@ -38,23 +35,12 @@
 		<div class="container">
 			<div class="banner-text">
 				<div class="banner-heading">
-					#{home.people}
+					People
 				</div>
+				<a class="btn btn-warning text-dark btn-banner" th:href="@{/add-people}">Create!</a>
 			</div>
 		</div>
 	</div>
 
-<section id="about">
-	<div class="container">
-<h2>Add People</h2>
- <form action="#" th:action="@{/people}" method="post">
- <label>Name<input type="text" name="name" id="name"></input></label>
- <label>Year<input type="text" name="years" id="years"></input></label>
- <label>Member<input type="text" name="member" id="member"></input></label>
- <input type="submit" value="Submit"></input>
- </form>
- </div>
- </section>
- 
 </body>
 </html> 

@@ -12,12 +12,12 @@ public class HomeController {
 	    return "home";
 	}
 	
-	// Redirect to Artist View.
+	// Redirect Template Artist.
 	public String redirectToArtistView() {		    
 		return "artist";
 	}
 	
-	// Redirect to People View.
+	// Redirect Template People.
 	public String redirectToPeopleView() {		    
 		return "people";
 	}

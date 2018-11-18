@@ -9,17 +9,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.musify.musify.connection.ConnectionManager;
+import com.musify.musify.connection.DBConnection;
 import com.musify.musify.model.Style;
 
 @Service
-public class StyleService {
+public class StyleService implements MusifyService{
 	
 	private static final String DB_URL = "jdbc:h2:~/test"; 
 	private static final String SQL_STYLE = "SELECT ID, NAME FROM STYLE";
 
 	ConnectionManager manager = new DBConnection();
     Connection conn = null;
-    
     PreparedStatement preparedstatement = null;
     
     public List<Style> allStyles() {
@@ -50,20 +51,22 @@ public class StyleService {
 	    return lista;
 	}	
     
+    @Override
     public void close(ResultSet resultSet){
 		 try{
 			 resultSet.close();
 		 }catch (SQLException e) {
-			 System.out.println("SQLException CLOSE method");
+			 System.out.println("SQLException CLOSE RESULTSET method");
 			 throw new RuntimeException(e);
 		 }
 	 }
 	 
+    @Override
 	 public void close(PreparedStatement preparedStatement){
 		 try{
 			 preparedStatement.close();
 		 }catch (SQLException e) {
-			 System.out.println("SQLException close CLOSE02 method");
+			 System.out.println("SQLException CLOSE PREPAREDSTATEMENT method");
 		     throw new RuntimeException(e);
 		 }
 	}

@@ -21,10 +21,10 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav ml-auto">
       	<li class="nav-item">
-        	<a class="nav-link active" th:href="@{/artist}">Artists</a>
+        	<a class="nav-link" th:href="@{/artist}">Artists</a>
       	</li>
       	<li class="nav-item">
-        	<a class="nav-link" th:href="@{/people}">People</a>
+        	<a class="nav-link active" th:href="@{/people}">People</a>
      	</li> 
     </ul>
   	</div>
@@ -35,19 +35,19 @@
 		<div class="container">
 			<div class="banner-text">
 				<div class="banner-heading">
-					Artists
+					People
 				</div>
 				<div class="container-fluid banner-sub-content">
-					<form action="" th:action="@{/add-artist}" method="post">
+					<form action="" th:action="@{/add-people}" method="post">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Artist email<span class="needed">*</span></label>
+							<label for="name">Name<span class="needed">*</span></label>
 						    <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required="required">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">Artist year</label>
-						    <input type="number" class="form-control" id="year" name="year" placeholder="Enter year">
+							<label for="years">Years</label>
+						    <input type="number" class="form-control" id="years" name="years" placeholder="Enter year">
 						</div>
-						<button type="submit" class="btn btn-warning">Create a new Artist</button>
+						<button type="submit" class="btn btn-warning">Create</button>
 					</form>
 				</div>
 			</div>

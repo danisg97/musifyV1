@@ -69,3 +69,14 @@
 	font-family: 'Gothic A1', sans-serif;
 	color: red;
 }
+
+.related-content {
+	background-color: #212529;
+	font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+}
+
+.form-style {
+	 text-align: center !important;
+	 vertical-align: middle !important;
+	 background-color: #212529 !important;
+}
